@@ -8,6 +8,9 @@ import sys
 sys.path.append('../')
 from calculator import Calculator
 
+
+# setUpModule and tearDownModule are included with unit testing in python
+# these are things that you just put in tests...  really for times when you have multiple test classes
 def setUpModule():
   print('set up module')
 
@@ -21,6 +24,8 @@ class TestCalculator(unittest.TestCase):
     print('Set up class')
     # Create an instance of the calculator that can be used in all tests
     cls.calc = Calculator()
+    cls.num1 = 2
+    cls.num2 = 6
     
 
   @classmethod
@@ -28,7 +33,16 @@ class TestCalculator(unittest.TestCase):
     print('Tear down class')
 
   def test_add(self):
-    self.assertEqual(self.calc.add(2, 7), 9)
+    result = self.calc.add(2, 7)
+    expected = 9
+    print("result", result)
+    print("expected", expected)
+    self.assertEqual(result, expected)
+    self.assertNotEqual(self.calc.add(3, 3), 4)
+    self.assertEqual(self.calc.add(self.num1, self.num2), 8)
+
+
+
 
   # Write test methods for subtract, multiply, and divide
 

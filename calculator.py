@@ -27,7 +27,7 @@ class Calculator():
 
         Arguments:
           firstOperand - Any number
-          secondOperand - An number
+          secondOperand - Any number
         """
 
         return firstOperand - secondOperand
